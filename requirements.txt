@@ -1,12 +1,12 @@
-torchvision>=0.23.0
-accelerate>=1.10.1
-gradio>=5.44.0
-pre-commit>=4.2.0
-PyMuPDF>=1.26.3
-av>=15.0.0
-spaces>=0.40.1
-transformers>=4.56.1
+torchvision>=0.24.0
+accelerate>=1.11.0
+gradio>=5.49.1
+pre-commit>=4.3.0
+PyMuPDF>=1.26.5
+av>=16.0.1
+transformers>=4.57.1
+spaces>=0.42.1
 
-# sglang>=0.5.3  # using with sglang to infer
+# sglang>=0.5.4  # using with sglang to infer
 # vllm>=0.11.0   # using with vllm to infer
 # not recommended to install sglang and vllm in the same environment

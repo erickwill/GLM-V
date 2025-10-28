@@ -23,7 +23,8 @@ Through our open-source work, we aim to explore the technological frontier toget
 
 ## Project Updates
 
-- 🔥 **News**: `2025/08/11`: We released **GLM-4.5V** with significant improvements across multiple benchmarks. We also open-sourced our handcrafted **desktop assistant app** for debugging. Once connected to GLM-4.5V, it can capture visual information from your PC screen via screenshots or screen recordings. Feel free to try it out or customize it into your own multimodal assistant. Click [here](https://huggingface.co/spaces/zai-org/GLM-4.5V-Demo-App) to download the installer or [build from source](examples/vllm-chat-helper/README.md)!
+- 🔥 **News**: `2025/10/27`: We’ve released **Glyph**, a framework for scaling the context length through visual-text compression, the glyph model trained based on `GLM-4.1V-Base`. Check it out [here](https://huggingface.co/zai-org/Glyph).
+- **News**: `2025/08/11`: We released **GLM-4.5V** with significant improvements across multiple benchmarks. We also open-sourced our handcrafted **desktop assistant app** for debugging. Once connected to GLM-4.5V, it can capture visual information from your PC screen via screenshots or screen recordings. Feel free to try it out or customize it into your own multimodal assistant. Click [here](https://huggingface.co/spaces/zai-org/GLM-4.5V-Demo-App) to download the installer or [build from source](examples/vllm-chat-helper/README.md)!
 - **News**: `2025/07/16`: We have open-sourced the **VLM Reward System** used to train GLM-4.1V-Thinking.View the [code repository](glmv_reward) and run locally: `python examples/reward_system_demo.py`.
 - **News**: `2025/07/01`: We released **GLM-4.1V-9B-Thinking** and its [technical report](https://arxiv.org/abs/2507.01006).
 

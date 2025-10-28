@@ -21,8 +21,8 @@
 **本开源仓库包含了我们开发的`GLM-4.5V` 和 `GLM-4.1V` 系列模型**。模型性能及简介请参见 [模型介绍章节](#模型介绍)。我们也总结了一些模型已知的问题，请移步 [已修复及仍存在的问题章节](#已修复及仍存在的问题)。
 
 ## 项目更新
-
-- 🔥 **News**: `2025/08/11`: 我们发布了 **GLM-4.5V**，多项指标大幅度提升。我们同步开源了我们工程同学手搓的调试用**桌面小助手应用**，接入GLM-4.5V后能够通过截屏、录屏等方式获取PC屏幕上的视觉信息，欢迎试玩和魔改，打造自己的多模态小助手，点击 [这里](https://huggingface.co/spaces/zai-org/GLM-4.5V-Demo-App) 下载安装包或 [自行构建](examples/vllm-chat-helper/README.md) ！
+- 🔥 **News**: `2025/10/27`: 我们发布了基于`GLM-4.1V-Base`训练的**Glyph**，Glyph 是一个通过视觉文本压缩来扩展上下文长度的框架， 欢迎前往[查看](https://huggingface.co/zai-org/Glyph)。
+- **News**: `2025/08/11`: 我们发布了 **GLM-4.5V**，多项指标大幅度提升。我们同步开源了我们工程同学手搓的调试用**桌面小助手应用**，接入GLM-4.5V后能够通过截屏、录屏等方式获取PC屏幕上的视觉信息，欢迎试玩和魔改，打造自己的多模态小助手，点击 [这里](https://huggingface.co/spaces/zai-org/GLM-4.5V-Demo-App) 下载安装包或 [自行构建](examples/vllm-chat-helper/README.md) ！
 - **News**: `2025/07/16`: 我们已经开源了训练 GLM-4.1V-Thinking 使用的 **VLM 奖励系统**。 查看[代码仓库](glmv_reward) 并在本地运行：`python examples/reward_system_demo.py`。
 - **News**: `2025/07/01`: 我们发布了 **GLM-4.1V-9B-Thinking** 模型和其[技术报告](https://arxiv.org/abs/2507.01006)。
 
@@ -77,7 +77,7 @@ pip install -r requirements.txt
 ### transformers
 
 - `trans_infer_cli.py`: 使用`transformers`库作为推理后端的命令行交互脚本。你可以使用它进行连续对话。
-- `trans_infer_gradio.py`: 使用`transformers`库作为推理后段的 Gradio 界面脚本，搭建一个可以直接使用的 Web 界面，支持图片，视频，PDF，PPT等多模态输入。
+- `trans_infer_gradio.py`: 使用`transformers`库作为推理后端的 Gradio 界面脚本，搭建一个可以直接使用的 Web 界面，支持图片，视频，PDF，PPT等多模态输入。
 - `trans_infer_bench`：用于学术复现的推理脚本，仅适用于 `GLM-4.1V-9B-Thinking` 模型。其核心在于指定了中断思考的长度，当思考长度超过`8192`时，强制中断思考并补上`</think><answer>`再次发起请求，让模型直接输出答案。该例子中使用的一个视频作为输入的测试的例子。其他情况需自行修改。
 
 ### vLLM
