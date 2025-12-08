@@ -137,6 +137,10 @@ python3 -m sglang.launch_server --model-path zai-org/GLM-4.6V \
         },
     ```
 
+### xLLM
+
+参考 [这里](examples/Ascend_GPU/README_zh.md) 获取详细配置教程。
+
 ## 模型微调
 
 [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) 已经支持 GLM-4.5V & GLM-4.1V-9B-Thinking 模型的微调。以下是构建数据集的说明，这是一个使用了两张图片的数据集。你需要将数据集整理为 `finetune.json`, 这里是一个 GLM-4.1V-9B 微调的例子。

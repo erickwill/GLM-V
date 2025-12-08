@@ -173,7 +173,7 @@ Notes:
         },
     ```
 
-### xLLM (Ascend A3 NPU)
+### xLLM
 
 check [here](examples/Ascend_GPU/README_zh.md) for detailed instructions.
 
