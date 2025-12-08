@@ -6,63 +6,101 @@
 <img src=resources/logo.svg width="40%"/>
 </div>
 <p align="center">
-    👋 Join our <a href="resources/WECHAT.md" target="_blank">WeChat</a> and <a href="https://discord.com/invite/8cnQKdAprg" target="_blank">Discord</a> communities.
+    👋 Join our <a href="resources/WECHAT.md" target="_blank">WeChat</a> and <a href="https://t.co/b6zGxJvzzS" target="_blank">Discord</a> communities.
     <br>
-    📖 Check out the <a href="https://arxiv.org/abs/2507.01006" target="_blank">paper</a>.
+    📖 Check out the GLM-4.6V <a href="https://z.ai/blog/glm-4.6v" target="_blank">blog</a> and GLM-4.5V & GLM-4.1V <a href="https://arxiv.org/abs/2507.01006" target="_blank">paper</a>.
     <br>
-    📍 Try <a href="https://chat.z.ai/" target="_blank">online</a> or use the <a href="https://docs.z.ai/guides/vlm/glm-4.5v" target="_blank">API</a>.
+    📍 Try <a href="https://chat.z.ai/" target="_blank">online</a> or use the <a href="https://docs.z.ai/guides/vlm/glm-4.6v" target="_blank">API</a>.
 </p>
 
 ## Introduction
 
-Vision-language models (VLMs) have become a key cornerstone of intelligent systems. As real-world AI tasks grow increasingly complex, VLMs urgently need to enhance reasoning capabilities beyond basic multimodal perception — improving accuracy, comprehensiveness, and intelligence — to enable complex problem solving, long-context understanding, and multimodal agents.
+Vision-language models (VLMs) have become a key cornerstone of intelligent systems. As real-world AI tasks grow
+increasingly complex, VLMs urgently need to enhance reasoning capabilities beyond basic multimodal perception —
+improving accuracy, comprehensiveness, and intelligence — to enable complex problem solving, long-context understanding,
+and multimodal agents.
 
-Through our open-source work, we aim to explore the technological frontier together with the community while empowering more developers to create exciting and innovative applications.
+Through our open-source work, we aim to explore the technological frontier together with the community while empowering
+more developers to create exciting and innovative applications.
 
-**This open-source repository contains our `GLM-4.5V` and `GLM-4.1V` series models.** For performance and details, see [Model Overview](#model-overview). For known issues, see [Fixed and Remaining Issues](#fixed-and-remaining-issues).
+**This open-source repository contains our `GLM-4.6V`, `GLM-4.5V` and `GLM-4.1V` series models.** For performance and
+details, see [Model Overview](#model-overview). For known issues,
+see [Fixed and Remaining Issues](#fixed-and-remaining-issues).
 
 ## Project Updates
 
-- 🔥 **News**: `2025/10/27`: We’ve released **Glyph**, a framework for scaling the context length through visual-text compression, the glyph model trained based on `GLM-4.1V-Base`. Check it out [here](https://huggingface.co/zai-org/Glyph).
-- **News**: `2025/08/11`: We released **GLM-4.5V** with significant improvements across multiple benchmarks. We also open-sourced our handcrafted **desktop assistant app** for debugging. Once connected to GLM-4.5V, it can capture visual information from your PC screen via screenshots or screen recordings. Feel free to try it out or customize it into your own multimodal assistant. Click [here](https://huggingface.co/spaces/zai-org/GLM-4.5V-Demo-App) to download the installer or [build from source](examples/vllm-chat-helper/README.md)!
-- **News**: `2025/07/16`: We have open-sourced the **VLM Reward System** used to train GLM-4.1V-Thinking.View the [code repository](glmv_reward) and run locally: `python examples/reward_system_demo.py`.
-- **News**: `2025/07/01`: We released **GLM-4.1V-9B-Thinking** and its [technical report](https://arxiv.org/abs/2507.01006).
+- 🔥 **News**: `2025/12/08`: We’ve released **GLM-4.6V** series model, including GLM-4.6V (106B-A12B) and
+  GLM-4.6V-Flash (9B). GLM-4.6V scales its context window to 128k tokens in training, and we integrate native Function
+  Calling capabilities for the first time. This effectively bridges the gap between "visual perception" and "executable
+  action," providing a unified technical foundation for multimodal agents in real-world business scenarios.
+- **News**: `2025/11/10`: We released **UI2Code^N**, a RL-enhanced UI coding model with UI-to-code, UI-polish, and
+  UI-edit capabilities. The model is trained based on `GLM-4.1V-Base`. Check it
+  out [here](https://huggingface.co/zai-org/UI2Code_N).
+- **News**: `2025/10/27`: We’ve released **Glyph**, a framework for scaling the context length through visual-text
+  compression, the glyph model trained based on `GLM-4.1V-Base`. Check it
+  out [here](https://huggingface.co/zai-org/Glyph).
+- **News**: `2025/08/11`: We released **GLM-4.5V** with significant improvements across multiple benchmarks. We also
+  open-sourced our handcrafted **desktop assistant app** for debugging. Once connected to GLM-4.5V, it can capture
+  visual information from your PC screen via screenshots or screen recordings. Feel free to try it out or customize it
+  into your own multimodal assistant. Click [here](https://huggingface.co/spaces/zai-org/GLM-4.5V-Demo-App) to download
+  the installer or [build from source](examples/vllm-chat-helper/README.md)!
+- **News**: `2025/07/16`: We have open-sourced the **VLM Reward System** used to train GLM-4.1V-Thinking.View
+  the [code repository](glmv_reward) and run locally: `python examples/reward_system_demo.py`.
+- **News**: `2025/07/01`: We released **GLM-4.1V-9B-Thinking** and
+  its [technical report](https://arxiv.org/abs/2507.01006).
 
 ## Model Implementation Code
 
-- GLM-4.5V model algorithm: see the full implementation in [transformers](https://github.com/huggingface/transformers/tree/main/src/transformers/models/glm4v_moe).
-- GLM-4.1V-9B-Thinking model algorithm: see the full implementation in [transformers](https://github.com/huggingface/transformers/tree/main/src/transformers/models/glm4v).
-- Both models share identical multimodal preprocessing, but use different conversation templates — please distinguish carefully.
+- GLM-4.5V and GLM-4.6V model algorithm: see the full implementation
+  in [transformers](https://github.com/huggingface/transformers/tree/main/src/transformers/models/glm4v_moe).
+- GLM-4.1V-9B-Thinking model algorithm: see the full implementation
+  in [transformers](https://github.com/huggingface/transformers/tree/main/src/transformers/models/glm4v).
+- Both models share identical multimodal preprocessing, but use different conversation templates — please distinguish
+  carefully.
 
 ## Model Downloads
 
-| Model                | Download Links                                                                                                                                          | Type           |
-|----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|----------------|
-| GLM-4.5V             | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.5V)<br>[🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.5V)                             | Hybrid Reasoning |
-| GLM-4.5V-FP8         | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.5V-FP8)<br>[🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.5V-FP8)                     | Hybrid Reasoning |
-| GLM-4.1V-9B-Thinking | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.1V-9B-Thinking)<br>[🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.1V-9B-Thinking)     | Reasoning       |
-| GLM-4.1V-9B-Base     | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.1V-9B-Base)<br>[🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.1V-9B-Base)             | Base            |
+| Model                | Download Links                                                                                                                                       | Type             |
+|----------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|------------------|
+| GLM-4.6V             | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.6V)<br>[🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.6V)                         | Hybrid Reasoning |
+| GLM-4.6V-FP8         | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.6V-FP8)<br>[🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.6V-FP8)                 | Hybrid Reasoning |
+| GLM-4.6V-Flash       | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.6V-Flash)<br>[🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.6V-Flash)             | Hybrid Reasoning |
+| GLM-4.5V             | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.5V)<br>[🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.5V)                         | Hybrid Reasoning |
+| GLM-4.5V-FP8         | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.5V-FP8)<br>[🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.5V-FP8)                 | Hybrid Reasoning |
+| GLM-4.1V-9B-Thinking | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.1V-9B-Thinking)<br>[🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.1V-9B-Thinking) | Reasoning        |
+| GLM-4.1V-9B-Base     | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.1V-9B-Base)<br>[🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.1V-9B-Base)         | Base             |
 
-## Examples
+## Using Case
 
 ### Grounding
 
-GLM-4.5V equips precise grounding capabilities. Given a prompt that requests the location of a specific object, GLM-4.5V is able to reasoning step-by-step and identify the bounding boxes of the target object. The query prompt supports complex descriptions of the target object as well as specified output formats, for example:
+GLM-4.5V equips precise grounding capabilities. Given a prompt that requests the location of a specific object, GLM-4.5V
+is able to reasoning step-by-step and identify the bounding boxes of the target object. The query prompt supports
+complex descriptions of the target object as well as specified output formats, for example:
 >
 > - Help me to locate <expr> in the image and give me its bounding boxes.
 > - Please pinpoint the bounding box [[x1,y1,x2,y2], …] in the image as per the given description. <expr>
 
-Here, `<expr>` is the description of the target object. The output bounding box is a quadruple $$[x_1,y_1,x_2,y_2]$$ composed of the coordinates of the top-left and bottom-right corners, where each value is normalized by the image width (for x) or height (for y) and scaled by 1000.
+Here, `<expr>` is the description of the target object. The output bounding box is a quadruple $$[x_1,y_1,x_2,y_2]$$
+composed of the coordinates of the top-left and bottom-right corners, where each value is normalized by the image
+width (for x) or height (for y) and scaled by 1000.
 
-In the response, the special tokens `<|begin_of_box|>` and `<|end_of_box|>` are used to mark the image bounding box in the answer. The bracket style may vary ([], [[]], (), <>, etc.), but the meaning is the same: to enclose the coordinates of the box.
+In the response, the special tokens `<|begin_of_box|>` and `<|end_of_box|>` are used to mark the image bounding box in
+the answer. The bracket style may vary ([], [[]], (), <>, etc.), but the meaning is the same: to enclose the coordinates
+of the box.
 
 ### GUI Agent
 
-- `examples/gui-agent`: Demonstrates prompt construction and output handling for GUI Agents, including strategies for mobile, PC, and web. Prompt templates differ between GLM-4.1V and GLM-4.5V.
+- `examples/gui-agent`: Demonstrates prompt construction and output handling for GUI Agents, including strategies for
+  mobile, PC, and web. Prompt templates differ between GLM-4.1V and GLM-4.5V.
 
 ### Quick Demo
 
-- `examples/vlm-helper`: A desktop assistant for GLM multimodal models (mainly GLM-4.5V, compatible with GLM-4.1V), supporting text, images, videos, PDFs, PPTs, and more. Connects to the GLM multimodal API for intelligent services across scenarios. Download the [installer](https://huggingface.co/spaces/zai-org/GLM-4.5V-Demo-App) or [build from source](examples/vlm-helper/README.md).
+- `examples/vlm-helper`: A desktop assistant for GLM multimodal models (mainly GLM-4.5V, compatible with GLM-4.1V),
+  supporting text, images, videos, PDFs, PPTs, and more. Connects to the GLM multimodal API for intelligent services
+  across scenarios. Download the [installer](https://huggingface.co/spaces/zai-org/GLM-4.5V-Demo-App)
+  or [build from source](examples/vlm-helper/README.md).
+
 
 ## Quick Start
 
@@ -72,53 +110,78 @@ In the response, the special tokens `<|begin_of_box|>` and `<|end_of_box|>` are 
 pip install -r requirements.txt
 ```
 
-+ vLLM and SGLang dependencies may conflict, so it is recommended to install only one of them in each environment.
+- vLLM and SGLang dependencies may conflict, so it is recommended to install only one of them in each environment.
+- Please note that after installation, you should verify the version of `transformers` and ensure it is upgraded to `5.0.0rc0` or above.
 
 ### transformers
 
 - `trans_infer_cli.py`: CLI for continuous conversations using `transformers` backend.
-- `trans_infer_gradio.py`: Gradio web interface with multimodal input (images, videos, PDFs, PPTs) using `transformers` backend.
-- `trans_infer_bench`: Academic reproduction script for `GLM-4.1V-9B-Thinking`. It forces reasoning truncation at length `8192` and requests direct answers afterward. Includes a video input example; modify for other cases.
+- `trans_infer_gradio.py`: Gradio web interface with multimodal input (images, videos, PDFs, PPTs) using `transformers`
+  backend.
+- `trans_infer_bench`: Academic reproduction script for `GLM-4.1V-9B-Thinking`. It forces reasoning truncation at length
+  `8192` and requests direct answers afterward. Includes a video input example; modify for other cases.
 
 ### vLLM
 
 ```bash
-vllm serve zai-org/GLM-4.5V \
+vllm serve zai-org/GLM-4.6V \
      --tensor-parallel-size 4 \
      --tool-call-parser glm45 \
      --reasoning-parser glm45 \
      --enable-auto-tool-choice \
-     --served-model-name glm-4.5v \
+     --served-model-name glm-4.6v \
      --allowed-local-media-path / \
-     --media-io-kwargs '{"video": {"num_frames": -1}}'
+     --mm-encoder-tp-mode data \ 
+     --mm_processor_cache_type shm \ 
 ```
 
-Notes:
-- If you are using vllm==0.11.0 and encounter a `torch.AcceleratorError` when using `fa2` (the default attention backend), try setting the environment variable `VLLM_ATTENTION_BACKEND=FLASHINFER` to switch Attention backand. 
+For more detail, check [vLLM Recipes](https://github.com/vllm-project/recipes/blob/main/GLM/GLM-V.md).
 
 ### SGlang
 
 ```shell
-python3 -m sglang.launch_server --model-path zai-org/GLM-4.5V \
+python3 -m sglang.launch_server --model-path zai-org/GLM-4.6V \
      --tp-size 4 \
-     --tool-call-parser glm45 \
-     --reasoning-parser glm45 \
-     --served-model-name glm-4.5v \
+     --tool-call-parser glm \
+     --reasoning-parser glm \
+     --served-model-name glm-4.6v \
+     --mm-enable-dp-encoder \
      --port 8000 \
      --host 0.0.0.0
 ```
 
 Notes:
-- We recommend using the `FA3` attention backend in SGLang for higher inference performance and lower memory usage:  
-  `--attention-backend fa3 --mm-attention-backend fa3 --enable-torch-compile`  
-  Without `FA3`, large video inference may cause out-of-memory (OOM) errors.  
-  We also recommend increasing `SGLANG_VLM_CACHE_SIZE_MB` (e.g., `1024`) to provide sufficient cache space for video understanding.
-- When using `vLLM` and `SGLang`, thinking mode is enabled by default. To disable the thinking switch, add:  
+
+- We recommend increasing `SGLANG_VLM_CACHE_SIZE_MB` (e.g., `1024`) to provide sufficient cache space for video
+  understanding.
+- When using `vLLM` and `SGLang`, thinking mode is enabled by default. To disable the thinking switch, Add:  
   `extra_body={"chat_template_kwargs": {"enable_thinking": False}}`
+- You can configure a thinking budget to limit the model’s maximum reasoning span. Add
+  
+    ```python
+  from sglang.srt.sampling.custom_logit_processor import Glm4MoeThinkingBudgetLogitProcessor
+    ```
+  
+  and
+
+    ```python
+  extra_body={
+            "custom_logit_processor": Glm4MoeThinkingBudgetLogitProcessor().to_str(),
+            "custom_params": {
+                "thinking_budget": 8192, # max reasoning length in tokens
+            },
+        },
+    ```
+
+### xLLM (Ascend A3 NPU)
+
+check [here](examples/Ascend_GPU/README_zh.md) for detailed instructions.
 
 ## Model Fine-tuning
 
-[LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) already supports fine-tuning for GLM-4.5V & GLM-4.1V-9B-Thinking models. Below is an example of dataset construction using two images. You should organize your dataset into `finetune.json` in the following format, This is an example for fine-tuning GLM-4.1V-9B.
+[LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) already supports fine-tuning for GLM-4.5V &
+GLM-4.1V-9B-Thinking models. Below is an example of dataset construction using two images. You should organize your
+dataset into `finetune.json` in the following format, This is an example for fine-tuning GLM-4.1V-9B.
 
 ```json
 [
@@ -152,60 +215,97 @@ Notes:
 1. The content inside `<think> ... </think>` will **not** be stored as conversation history or in fine-tuning data.
 2. The `<image>` tag will be replaced with the corresponding image information.
 3. For the GLM-4.5V model, the <answer> and </answer> tags should be removed.
-  
+
 Then, you can fine-tune following the standard LLaMA-Factory procedure.
 
 ## Model Overview
 
+## Model Overview
+
+### GLM-4.6V
+
+GLM-4.6V series model includes two versions: GLM-4.6V (106B), a foundation model designed for cloud and high-performance
+cluster scenarios,
+and GLM-4.6V-Flash (9B), a lightweight model optimized for local deployment and low-latency applications.
+GLM-4.6V scales its context window to 128k tokens in training,
+and achieves SoTA performance in visual understanding among models of similar parameter scales.
+Crucially, we integrate native Function Calling capabilities for the first time.
+This effectively bridges the gap between "visual perception" and "executable action"
+providing a unified technical foundation for multimodal agents in real-world business scenarios.
+
+![GLM-4.6V Benchmarks](resources/bench_46v.jpeg)
+
+Beyond achieves SoTA performance across major multimodal benchmarks at comparable model scales. GLM-4.6V introduces
+several key features:
+
+- **Native Multimodal Function Calling**
+Enables native vision-driven tool use. Images, screenshots, and document pages can be passed directly as tool inputs without text conversion, while visual outputs (charts, search images, rendered pages) are interpreted and integrated into the reasoning chain. This closes the loop from perception to understanding to execution.
+
+- **Interleaved Image-Text Content Generation**
+Supports high-quality mixed media creation from complex multimodal inputs. GLM-4.6V takes a multimodal context—spanning documents, user inputs, and tool-retrieved images—and synthesizes coherent, interleaved image-text content tailored to the task. During generation it can actively call search and retrieval tools to gather and curate additional text and visuals, producing rich, visually grounded content.
+
+- **Multimodal Document Understanding**
+GLM-4.6V can process up to 128K tokens of multi-document or long-document input, directly interpreting richly formatted pages as images. It understands text, layout, charts, tables, and figures jointly, enabling accurate comprehension of complex, image-heavy documents without requiring prior conversion to plain text.
+  
+- **Frontend Replication & Visual Editing**
+Reconstructs pixel-accurate HTML/CSS from UI screenshots and supports natural-language-driven edits. It detects layout, components, and styles visually, generates clean code, and applies iterative visual modifications through simple user instructions.
+
 ### GLM-4.5V
 
-GLM-4.5V is based on ZhipuAI’s next-generation flagship text foundation model GLM-4.5-Air (106B parameters, 12B active).  
-It continues the technical approach of GLM-4.1V-Thinking, achieving SOTA performance among models of the same scale on 42 public vision-language benchmarks.  
+GLM-4.5V is based on ZhipuAI’s GLM-4.5-Air.  
+It continues the technical approach of GLM-4.1V-Thinking, achieving SOTA performance among models of the same scale on
+42 public vision-language benchmarks.  
 It covers common tasks such as image, video, and document understanding, as well as GUI agent operations.
 
-![bench_45](resources/bench_45v.jpeg)
+Beyond benchmark performance, GLM-4.5V focuses on real-world usability. Through efficient hybrid training, it can handle
+diverse types of visual content, enabling full-spectrum vision reasoning, including:
 
-Beyond benchmark performance, GLM-4.5V focuses on real-world usability. Through efficient hybrid training, it can handle diverse types of visual content, enabling full-spectrum vision reasoning, including:
 - **Image reasoning** (scene understanding, complex multi-image analysis, spatial recognition)
 - **Video understanding** (long video segmentation and event recognition)
 - **GUI tasks** (screen reading, icon recognition, desktop operation assistance)
 - **Complex chart & long document parsing** (research report analysis, information extraction)
 - **Grounding** (precise visual element localization)
 
-The model also introduces a **Thinking Mode** switch, allowing users to balance between quick responses and deep reasoning. This switch works the same as in the `GLM-4.5` language model.
+The model also introduces a **Thinking Mode** switch, allowing users to balance between quick responses and deep
+reasoning. This switch works the same as in the `GLM-4.5` language model.
 
 ### GLM-4.1V-9B
 
-Built on the [GLM-4-9B-0414](https://github.com/zai-org/GLM-4) foundation model, the **GLM-4.1V-9B-Thinking** model introduces a reasoning paradigm and uses RLCS (Reinforcement Learning with Curriculum Sampling) to comprehensively enhance model capabilities.  
-It achieves the strongest performance among 10B-level VLMs and matches or surpasses the much larger Qwen-2.5-VL-72B in 18 benchmark tasks.  
+Built on the [GLM-4-9B-0414](https://github.com/zai-org/GLM-4) foundation model, the **GLM-4.1V-9B-Thinking** model
+introduces a reasoning paradigm and uses RLCS (Reinforcement Learning with Curriculum Sampling) to comprehensively
+enhance model capabilities.  
+It achieves the strongest performance among 10B-level VLMs and matches or surpasses the much larger Qwen-2.5-VL-72B in
+18 benchmark tasks.
 
-We also open-sourced the base model **GLM-4.1V-9B-Base** to support researchers in exploring the limits of vision-language model capabilities.
+We also open-sourced the base model **GLM-4.1V-9B-Base** to support researchers in exploring the limits of
+vision-language model capabilities.
 
 ![rl](resources/rl.jpeg)
 
 Compared with the previous generation CogVLM2 and GLM-4V series, **GLM-4.1V-Thinking** brings:
+
 1. The series’ first reasoning-focused model, excelling in multiple domains beyond mathematics.
 2. **64k** context length support.
 3. Support for **any aspect ratio** and up to **4k** image resolution.
 4. A bilingual (Chinese/English) open-source version.
 
-GLM-4.1V-9B-Thinking integrates the **Chain-of-Thought** reasoning mechanism, improving accuracy, richness, and interpretability.  
-It leads on 23 out of 28 benchmark tasks at the 10B parameter scale, and outperforms Qwen-2.5-VL-72B on 18 tasks despite its smaller size.
+GLM-4.1V-9B-Thinking integrates the **Chain-of-Thought** reasoning mechanism, improving accuracy, richness, and
+interpretability.  
+It leads on 23 out of 28 benchmark tasks at the 10B parameter scale, and outperforms Qwen-2.5-VL-72B on 18 tasks despite
+its smaller size.
 
-![bench](resources/bench.jpeg)
+## Remaining Issues
 
-## Fixed and Remaining Issues
+Since the open-sourcing of GLM-4.1V, we have received extensive feedback from the community and are well aware that the model still has many shortcomings. In subsequent iterations, we attempted to address several common issues — such as repetitive thinking outputs and formatting errors — which have been mitigated to some extent in this new version.
 
-Since the release of GLM-4.1V, we have addressed many community-reported issues. In GLM-4.5V, common issues such as repetitive thinking and incorrect output formatting are alleviated.  
-However, some limitations remain:
+However, the model still has several limitations and issues that we will fix as soon as possible:
 
-1. In frontend code reproduction cases, the model may output raw HTML without proper markdown wrapping. There may also be character escaping issues, potentially causing rendering errors. We provide a [patch](inference/html_detector.py) to fix most cases.
-2. Pure text Q&A capabilities still have room for improvement, as this release focused primarily on multimodal scenarios.
-3. In some cases, the model may overthink or repeat content, especially for complex prompts.
-4. Occasionally, the model may restate the answer at the end.
-5. There are some perception issues, with room for improvement in tasks such as counting and identifying specific individuals.
+1. Pure text QA capabilities still have significant room for improvement. In this development cycle, our primary focus was on visual multimodal scenarios, and we will enhance pure text abilities in upcoming updates.
+2. The model may still overthink or even repeat itself in certain cases, especially when dealing with complex prompts.
+3. In some situations, the model may restate the answer again at the end.
+4. There remain certain perception limitations, such as counting accuracy and identifying specific individuals, which still require improvement.
 
-We welcome feedback in the issue section and will address problems as quickly as possible.
+Thank you for your patience and understanding. We also welcome feedback and suggestions in the issue section — we will respond and improve as much as we can!
 
 ## Citation
 
@@ -213,12 +313,12 @@ If you use this model, please cite the following paper:
 
 ```bibtex
 @misc{vteam2025glm45vglm41vthinkingversatilemultimodal,
-      title={GLM-4.5V and GLM-4.1V-Thinking: Towards Versatile Multimodal Reasoning with Scalable Reinforcement Learning}, 
+      title={GLM-4.5V and GLM-4.1V-Thinking: Towards Versatile Multimodal Reasoning with Scalable Reinforcement Learning},
       author={V Team and Wenyi Hong and Wenmeng Yu and Xiaotao Gu and Guo Wang and Guobing Gan and Haomiao Tang and Jiale Cheng and Ji Qi and Junhui Ji and Lihang Pan and Shuaiqi Duan and Weihan Wang and Yan Wang and Yean Cheng and Zehai He and Zhe Su and Zhen Yang and Ziyang Pan and Aohan Zeng and Baoxu Wang and Bin Chen and Boyan Shi and Changyu Pang and Chenhui Zhang and Da Yin and Fan Yang and Guoqing Chen and Jiazheng Xu and Jiale Zhu and Jiali Chen and Jing Chen and Jinhao Chen and Jinghao Lin and Jinjiang Wang and Junjie Chen and Leqi Lei and Letian Gong and Leyi Pan and Mingdao Liu and Mingde Xu and Mingzhi Zhang and Qinkai Zheng and Sheng Yang and Shi Zhong and Shiyu Huang and Shuyuan Zhao and Siyan Xue and Shangqin Tu and Shengbiao Meng and Tianshu Zhang and Tianwei Luo and Tianxiang Hao and Tianyu Tong and Wenkai Li and Wei Jia and Xiao Liu and Xiaohan Zhang and Xin Lyu and Xinyue Fan and Xuancheng Huang and Yanling Wang and Yadong Xue and Yanfeng Wang and Yanzi Wang and Yifan An and Yifan Du and Yiming Shi and Yiheng Huang and Yilin Niu and Yuan Wang and Yuanchang Yue and Yuchen Li and Yutao Zhang and Yuting Wang and Yu Wang and Yuxuan Zhang and Zhao Xue and Zhenyu Hou and Zhengxiao Du and Zihan Wang and Peng Zhang and Debing Liu and Bin Xu and Juanzi Li and Minlie Huang and Yuxiao Dong and Jie Tang},
       year={2025},
       eprint={2507.01006},
       archivePrefix={arXiv},
       primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2507.01006}, 
+      url={https://arxiv.org/abs/2507.01006},
 }
 ```

@@ -6,11 +6,10 @@
 <img src=resources/logo.svg width="40%"/>
 </div>
 <p align="center">
-    👋 加入我们的 <a href="resources/WECHAT.md" target="_blank">微信</a> 和 <a href="https://discord.com/invite/8cnQKdAprg" target="_blank">Discord</a> 社区。
+    👋 加入我们的 <a href="resources/WECHAT.md" target="_blank">微信</a> 和 <a href="https://t.co/b6zGxJvzzS" target="_blank">Discord</a> 社区。
     <br>
-    📖 查看 <a href="https://arxiv.org/abs/2507.01006" target="_blank">论文</a> 。
-    <br>
-    📍<a href="https://chat.z.ai/" target="_blank">在线体验</a> ，或使用 <a href="https://docs.z.ai/guides/vlm/glm-4.5v" target="_blank">API</a>。
+    📖 查看 GLM-4.6V 的<a href="https://z.ai/blog/glm-4.6v" target="_blank"> 技术博客 </a>以及 GLM-4.5V 与 GLM-4.1V 的<a href="https://arxiv.org/abs/2507.01006" target="_blank"> 论文 </a>。    <br>
+    📍<a href="https://chat.z.ai/" target="_blank">在线体验</a> ，或使用 <a href="https://docs.z.ai/guides/vlm/glm-4.6v" target="_blank">API</a>。
 </p>
 
 ## 简介
@@ -18,10 +17,13 @@
 视觉语言大模型（VLM）已经成为智能系统的关键基石。随着真实世界的智能任务越来越复杂，VLM模型也亟需在基本的多模态感知之外，逐渐增强复杂任务中的推理能力，提升自身的准确性、全面性和智能化程度，使得复杂问题解决、长上下文理解、多模态智能体等智能任务成为可能。
 我们希望通过我们的开源工作，与社区一起探索技术前沿，同时赋能更多开发者发挥创意做出更多好玩的应用。
 
-**本开源仓库包含了我们开发的`GLM-4.5V` 和 `GLM-4.1V` 系列模型**。模型性能及简介请参见 [模型介绍章节](#模型介绍)。我们也总结了一些模型已知的问题，请移步 [已修复及仍存在的问题章节](#已修复及仍存在的问题)。
+**本开源仓库包含了`GLM-4.6V`, `GLM-4.5V` 和 `GLM-4.1V` 系列模型**。模型性能及简介请参见 [模型介绍章节](#模型介绍)。我们也总结了一些模型已知的问题，请移步 [已修复及仍存在的问题章节](#已修复及仍存在的问题)。
 
 ## 项目更新
-- 🔥 **News**: `2025/10/27`: 我们发布了基于`GLM-4.1V-Base`训练的**Glyph**，Glyph 是一个通过视觉文本压缩来扩展上下文长度的框架， 欢迎前往[查看](https://huggingface.co/zai-org/Glyph)。
+
+- 🔥 **News**：`2025/12/08`：我们发布了 **GLM-4.6V**，包括 GLM-4.6V（106B-A12B）和 GLM-4.6V-Flash（9B）。GLM-4.6V 将训练时的上下文窗口扩展到 128k tokens，并首次引入原生的 Function Calling 能力。这一升级有效打通了“视觉感知”到“可执行行动”的链路，为真实业务场景中的多模态智能体提供了统一的技术底座。
+- **News**：`2025/11/10`：我们发布了 **UI2Code^N**，一款强化学习增强的 UI 编码模型，具备 UI-to-code、UI-polish 和 UI-edit 能力。该模型基于 `GLM-4.1V-Base` 训练。点击[这里](https://huggingface.co/zai-org/UI2Code_N)查看。
+- **News**: `2025/10/27`: 我们发布了基于`GLM-4.1V-Base`训练的**Glyph**，Glyph 是一个通过视觉文本压缩来扩展上下文长度的框架， 欢迎前往[查看](https://huggingface.co/zai-org/Glyph)。
 - **News**: `2025/08/11`: 我们发布了 **GLM-4.5V**，多项指标大幅度提升。我们同步开源了我们工程同学手搓的调试用**桌面小助手应用**，接入GLM-4.5V后能够通过截屏、录屏等方式获取PC屏幕上的视觉信息，欢迎试玩和魔改，打造自己的多模态小助手，点击 [这里](https://huggingface.co/spaces/zai-org/GLM-4.5V-Demo-App) 下载安装包或 [自行构建](examples/vllm-chat-helper/README.md) ！
 - **News**: `2025/07/16`: 我们已经开源了训练 GLM-4.1V-Thinking 使用的 **VLM 奖励系统**。 查看[代码仓库](glmv_reward) 并在本地运行：`python examples/reward_system_demo.py`。
 - **News**: `2025/07/01`: 我们发布了 **GLM-4.1V-9B-Thinking** 模型和其[技术报告](https://arxiv.org/abs/2507.01006)。
@@ -36,12 +38,15 @@
 
 | 模型                   | 下载地址                                                                                                                                                  | 模型类型   |
 |----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|--------|
+| GLM-4.6V             | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.6V)<br>[🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.6V)                         | 混合推理模型 |
+| GLM-4.6V-FP8         | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.6V-FP8)<br>[🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.6V-FP8)                 | 混合推理模型 |
+| GLM-4.6V-Flash       | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.6V-Flash)<br>[🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.6V-Flash)             | 混合推理模型 |
 | GLM-4.5V             | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.5V)<br> [🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.5V)                         | 混合推理模型 |
 | GLM-4.5V-FP8         | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.5V-FP8)<br> [🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.5V-FP8)                 | 混合推理模型 |
 | GLM-4.1V-9B-Thinking | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.1V-9B-Thinking)<br> [🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.1V-9B-Thinking) | 推理模型   |
 | GLM-4.1V-9B-Base     | [🤗 Hugging Face](https://huggingface.co/zai-org/GLM-4.1V-9B-Base)<br> [🤖 ModelScope](https://modelscope.cn/models/ZhipuAI/GLM-4.1V-9B-Base)         | 基座模型   |
 
-## 示例
+## 部分场景解释
 
 ### 定位（Grounding）
 
@@ -72,7 +77,8 @@ GLM-4.5V 具备精确的定位能力。给定一个请求定位特定物体的�
 pip install -r requirements.txt
 ```
 
-+ vLLM 和 SGLang 依赖可能冲突，建议每个环境中只安装其中一个。
+- vLLM 和 SGLang 依赖可能冲突，建议每个环境中只安装其中一个。
+- 请注意，安装完成之后，请检查 `transformers` 版本, 需要强制升级到 `5.0.0rc0` 及以上版本。
 
 ### transformers
 
@@ -82,37 +88,54 @@ pip install -r requirements.txt
 
 ### vLLM
 
-```shell
-vllm serve zai-org/GLM-4.5V \
-     --tensor-parallel-size 4   \
-     --tool-call-parser glm45   \
-     --reasoning-parser glm45   \
-     --enable-auto-tool-choice  \
-     --served-model-name glm-4.5v \
+```bash
+vllm serve zai-org/GLM-4.6V \
+     --tensor-parallel-size 4 \
+     --tool-call-parser glm45 \
+     --reasoning-parser glm45 \
+     --enable-auto-tool-choice \
+     --served-model-name glm-4.6v \
      --allowed-local-media-path / \
-     --media-io-kwargs '{"video": {"num_frames": -1}}'
+     --mm-encoder-tp-mode data \ 
+     --mm_processor_cache_type shm \ 
 ```
 
-注意事项: 
-- 如果使用 `vllm==0.11.0`, 并使用 `fa2` 注意力后端出现`torch.AcceleratorError`报错时, 可尝试增加 `VLLM_ATTENTION_BACKEND=FLASHINFER`环境变量替换注意力后端。
+关于性能测试和更多内容，请查看 [vLLM Recipes](https://github.com/vllm-project/recipes/blob/main/GLM/GLM-V.md)。
 
 ### SGLang
 
 ```shell
-python3 -m sglang.launch_server --model-path zai-org/GLM-4.5V \
-     --tp-size 4  \
-     --tool-call-parser glm45 \
-     --reasoning-parser glm45 \
-     --served-model-name glm-4.5v \
-     --port 8000 
-     --host 0.0.0.0 
+python3 -m sglang.launch_server --model-path zai-org/GLM-4.6V \
+     --tp-size 4 \
+     --tool-call-parser glm \
+     --reasoning-parser glm \
+     --served-model-name glm-4.6v \
+     --mm-enable-dp-encoder \
+     --port 8000 \
+     --host 0.0.0.0
 ```
 
 注意事项:
 
-- `SGLang` 框架建议使用 `FA3` 注意力后端，支持更高的推理性能和更低的显存占用，可添加 `--attention-backend fa3 --mm-attention-backend fa3 --enable-torch-compile`开启。在部分较大的视频推理时，不启用`FA3` 注意力后端会导致显存溢出。同时，我们建议设置更大的`SGLANG_VLM_CACHE_SIZE_MB`，以提供足够的缓存空间用于视频理解。例如`1024`。
-- 使用`vLLM`和`SGLang`时，发送请求时默认启用思考模式。如果要禁用思考开关，需要添加
-  `extra_body={"chat_template_kwargs": {"enable_thinking": False}}`参数。
+- 我们建议增大 `SGLANG_VLM_CACHE_SIZE_MB`（例如设为 `1024`），以为视频理解提供充足的缓存空间。
+- 在使用 `vLLM` 和 `SGLang` 时，思考模式默认开启。若需关闭思考开关，请添加：  
+  `extra_body={"chat_template_kwargs": {"enable_thinking": False}}`
+- 你可以配置思考预算（thinking budget）来限制模型的最大推理长度。添加：
+  
+    ```python
+  from sglang.srt.sampling.custom_logit_processor import Glm4MoeThinkingBudgetLogitProcessor
+    ```
+  
+   并且增加:
+
+    ```python
+  extra_body={
+            "custom_logit_processor": Glm4MoeThinkingBudgetLogitProcessor().to_str(),
+            "custom_params": {
+                "thinking_budget": 8192, # 最大思考长度
+            },
+        },
+    ```
 
 ## 模型微调
 
@@ -155,11 +178,32 @@ python3 -m sglang.launch_server --model-path zai-org/GLM-4.5V \
 
 ## 模型介绍
 
+### GLM-4.6V
+
+GLM-4.6V 系列包含两个版本：GLM-4.6V（106B），面向云端与高性能集群场景；GLM-4.6V-Flash（9B），面向本地部署与低延迟应用的轻量版。GLM-4.6V 在训练中将上下文窗口扩展至 128k tokens，并在相同参数规模下实现视觉理解的 SOTA 性能。
+
+更重要的是，我们首次在模型架构中原生集成了 Function Calling 能力，有效打通了从“视觉感知”到“可执行行动”的桥梁，为真实业务场景中的多模态智能体提供统一的技术底座。
+
+![GLM-4.6V Benchmarks](resources/bench_46v.jpeg)
+
+在主要多模态基准测试中取得同规模下的 SOTA 性能之外，GLM-4.6V 还带来了一系列重要特性：
+
+- **原生多模态工具调用（Native Multimodal Function Calling）**  
+  支持基于视觉的原生工具调用。图片、截图和文档页面可直接作为工具输入，无需文本转换；图表、检索图像和渲染页面等视觉输出，也能被模型理解并融入推理链，实现从“感知→理解→执行”的完整闭环。
+
+- **图文交织内容生成（Interleaved Image-Text Content Generation）**  
+  支持基于复杂多模态输入生成高质量混合内容。GLM-4.6V 能理解文档、用户输入以及工具检索图像构成的多模态上下文，并生成连贯的图文交织内容。模型在生成过程中可主动调用搜索与检索工具，以补充文本与视觉内容，生成丰富且视觉支撑强的结果。
+
+- **多模态文档理解（Multimodal Document Understanding）**  
+  支持最长 128K tokens 的多文档/长文档输入，直接以图像方式解析排版丰富的页面。模型可联合理解文本、布局、图表、表格与插图，实现无需转换为纯文本即可高质量解析复杂文档。
+
+- **前端还原与视觉编辑（Frontend Replication & Visual Editing）**  
+  能从 UI 截图中重建像素级逼真的 HTML/CSS，并支持自然语言驱动的可视化修改。模型可识别页面布局、组件与样式，生成干净代码，并根据用户指令迭代进行视觉编辑。
+
+
 ### GLM-4.5V
 
-GLM-4.5V 基于智谱新一代旗舰文本基座模型 GLM-4.5-Air（106B参数，12B激活），延续 GLM-4.1V-Thinking 技术路线，在 42 个公开视觉多模态榜单中综合效果达到同级别开源模型 SOTA 性能，涵盖图像、视频、文档理解以及 GUI Agent 等常见任务。
-
-![bench_45](resources/bench_45v.jpeg)
+GLM-4.5V 基于 GLM-4.5-Air，延续 GLM-4.1V-Thinking 技术路线，在 42 个公开视觉多模态榜单中综合效果达到当时同级别开源模型 SOTA 性能，涵盖图像、视频、文档理解以及 GUI Agent 等常见任务。
 
 在多模态榜单之外，我们更重视模型在真实场景下的表现与可用性。GLM-4.5V 通过高效混合训练，具备覆盖不同种视觉内容的处理能力，实现全场景视觉推理，包括：
 - 图像推理（场景理解、复杂多图分析、位置识别）
@@ -189,19 +233,16 @@ GLM-4.5V 基于智谱新一代旗舰文本基座模型 GLM-4.5-Air（106B参数�
 GLM-4.1V-9B-Thinking 通过引入「思维链」（Chain-of-Thought）推理机制，在回答准确性、内容丰富度与可解释性方面，
 全面超越传统的非推理式视觉模型。在28项评测任务中有23项达到10B级别模型最佳，甚至有18项任务超过8倍参数量的Qwen-2.5-VL-72B。
 
-![bench](resources/bench.jpeg)
+## 仍存在的问题
 
-## 已修复及仍存在的问题
-
-自GLM-4.1V开源以来，我们也收到了许多社区反馈，深知模型仍有许多不足。在这一版GLM-4.5V中，我们尝试修复了一些常见问题，例如thinking复读、输出格式错误等，在新版本中有所缓解。
+自 GLM-4.1V 开源以来，我们也收到了许多社区反馈，深知模型仍有许多不足。在后续模型的迭代中，我们尝试修复了一些常见问题，例如thinking复读、输出格式错误等，在新版本中有所缓解。
 
 模型仍存在一些局限性及问题，我们将尽快修复
 
-1. 在前端代码复刻案例中，模型会倾向于直接输出HTML代码，而没有正确包裹在markdown格式中，另外存在部分字符转义问题，导致直接进行前端渲染时可能遇到问题，非常抱歉。我们提供了一个简单的 [修复脚本](inference/html_detector.py)，能够在大部分情况下添加markdown标识及处理转义。
-2. GLM-4.5V的纯文本问答能力仍有较大提升空间，在这次模型研发中我们主要关注视觉多模态场景，后续将同步提升纯文本能力。
-3. 一些情况下仍然存在过度思考甚至复读的问题，尤其是复杂prompt场景。
-4. 一些情况下模型会在最后复述一遍答案。
-5. 存在一些感知问题，在数数、识别具体人物等方面有提升空间。
+1. 纯文本问答能力仍有较大提升空间，在这次模型研发中我们主要关注视觉多模态场景，后续将同步提升纯文本能力。
+2. 一些情况下仍然存在过度思考甚至复读的问题，尤其是复杂prompt场景。
+3. 一些情况下模型会在最后复述一遍答案。
+4. 存在一些感知问题，在数数、识别具体人物等方面有提升空间。
 
 感谢大家的耐心和包容，也非常欢迎在 issue 区给我们提意见和建议，我们会尽可能回复并修正！
 
@@ -211,12 +252,12 @@ GLM-4.1V-9B-Thinking 通过引入「思维链」（Chain-of-Thought）推理机�
 
 ```bibtex
 @misc{vteam2025glm45vglm41vthinkingversatilemultimodal,
-      title={GLM-4.5V and GLM-4.1V-Thinking: Towards Versatile Multimodal Reasoning with Scalable Reinforcement Learning}, 
+      title={GLM-4.5V and GLM-4.1V-Thinking: Towards Versatile Multimodal Reasoning with Scalable Reinforcement Learning},
       author={V Team and Wenyi Hong and Wenmeng Yu and Xiaotao Gu and Guo Wang and Guobing Gan and Haomiao Tang and Jiale Cheng and Ji Qi and Junhui Ji and Lihang Pan and Shuaiqi Duan and Weihan Wang and Yan Wang and Yean Cheng and Zehai He and Zhe Su and Zhen Yang and Ziyang Pan and Aohan Zeng and Baoxu Wang and Bin Chen and Boyan Shi and Changyu Pang and Chenhui Zhang and Da Yin and Fan Yang and Guoqing Chen and Jiazheng Xu and Jiale Zhu and Jiali Chen and Jing Chen and Jinhao Chen and Jinghao Lin and Jinjiang Wang and Junjie Chen and Leqi Lei and Letian Gong and Leyi Pan and Mingdao Liu and Mingde Xu and Mingzhi Zhang and Qinkai Zheng and Sheng Yang and Shi Zhong and Shiyu Huang and Shuyuan Zhao and Siyan Xue and Shangqin Tu and Shengbiao Meng and Tianshu Zhang and Tianwei Luo and Tianxiang Hao and Tianyu Tong and Wenkai Li and Wei Jia and Xiao Liu and Xiaohan Zhang and Xin Lyu and Xinyue Fan and Xuancheng Huang and Yanling Wang and Yadong Xue and Yanfeng Wang and Yanzi Wang and Yifan An and Yifan Du and Yiming Shi and Yiheng Huang and Yilin Niu and Yuan Wang and Yuanchang Yue and Yuchen Li and Yutao Zhang and Yuting Wang and Yu Wang and Yuxuan Zhang and Zhao Xue and Zhenyu Hou and Zhengxiao Du and Zihan Wang and Peng Zhang and Debing Liu and Bin Xu and Juanzi Li and Minlie Huang and Yuxiao Dong and Jie Tang},
       year={2025},
       eprint={2507.01006},
       archivePrefix={arXiv},
       primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2507.01006}, 
+      url={https://arxiv.org/abs/2507.01006},
 }
 ```
