@@ -74,7 +74,7 @@ see [Fixed and Remaining Issues](#fixed-and-remaining-issues).
 
 ### Grounding
 
-GLM-4.5V equips precise grounding capabilities. Given a prompt that requests the location of a specific object, GLM-4.5V
+GLM-4.5V / GLM-4.6V / GLM-4.1V equips precise grounding capabilities. Given a prompt that requests the location of a specific object, the model
 is able to reasoning step-by-step and identify the bounding boxes of the target object. The query prompt supports
 complex descriptions of the target object as well as specified output formats, for example:
 >
@@ -100,7 +100,6 @@ of the box.
   supporting text, images, videos, PDFs, PPTs, and more. Connects to the GLM multimodal API for intelligent services
   across scenarios. Download the [installer](https://huggingface.co/spaces/zai-org/GLM-4.5V-Demo-App)
   or [build from source](examples/vlm-helper/README.md).
-
 
 ## Quick Start
 
