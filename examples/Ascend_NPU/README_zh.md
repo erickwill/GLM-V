@@ -45,8 +45,8 @@ sudo docker run -it --ipc=host -u 0 --privileged --name mydocker --network=host 
 
 ```bash
 git clone https://github.com/jd-opensource/xllm
-cd xllm 
-git checkout release/v0.7.0  ## to do 12/06 glm46v相关代码尚未上仓
+cd xllm
+git checkout glm4.6v-preview
 git submodule init
 git submodule update
 ```
@@ -156,7 +156,7 @@ do
   PORT=$((START_PORT + i))
   DEVICE=$((START_DEVICE + i))
   LOG_FILE="$LOG_DIR/node_$i.log"
-  nohup numactl -C $((i*12))-$((i*12+11)) $XLLM_PATH \
+  nohup numactl -C $((DEVICE*12))-$((DEVICE*12+11)) $XLLM_PATH \
     --model $MODEL_PATH  -model_id glm_46v \
     --host $LOCAL_HOST \
     --port $PORT \
@@ -175,8 +175,8 @@ do
     > $LOG_FILE 2>&1 &
 done
 
-#numactl -C $((i*12))-$((i*12+11))      
-#                           亲和性绑核(亲和性查询命令： npu-smi info -t topo)
+#numactl -C $((DEVICE*12))-$((DEVICE*12+11))      
+#                           亲和性绑核(亲和性查询命令： npu-smi info -t topo) 可根据实际核数与亲和性修改
 #--max_memory_utilization   单卡最大显存占用比例
 #--max_tokens_per_batch     单batch最大token数  （主要限制prefill）
 #--max_seqs_per_batch       单batch最大请求数   （主要限制decoe）
@@ -185,9 +185,6 @@ done
 #--enable_prefix_cache      开启prefix_cache
 #--enable_chunked_prefill   开启chunked_prefill
 #--enable_acl_graph         开启aclgraph
-#--draft_model              mtp - mtp权重路径
-#--draft_devices            mtp - mtp推理设备(与主模型同一)
-#--num_speculative_tokens   mtp - 预测token数
 ```
 
 日志出现"Brpc Server Started"表示服务成功拉起。拉起成功截图：
