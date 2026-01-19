@@ -143,6 +143,19 @@ python3 -m sglang.launch_server --model-path zai-org/GLM-4.6V \
 
 参考 [这里](examples/Ascend_NPU/README_zh.md) 获取详细配置教程。
 
+## 与其他自动化工具集成
+
+### Midscene.js
+
+[Midscene.js](https://midscenejs.com/zh/index.html) 是一款由视觉模型驱动的开源 UI 自动化 SDK，支持通过 JavaScript 或 Yaml 格式的流程语法，实现多平台的自动化。
+
+目前 Midscene.js 已完成对 GLM-V 模型的适配，你可以通过 [Midscene.js 接入指南](https://midscenejs.com/model-common-config.html#glm-v) 快速体验 GLM-V 模型效果。
+
+这里有两个例子方便你快速启动：
+
+- [通过 Typescript 脚本调用 Midscene.js](./examples/midscene-ts-demo)
+- [通过 Yaml 脚本体验 Midscene.js](./examples/midscene-yaml-demo)
+
 ## 模型微调
 
 [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) 已经支持 GLM-4.5V & GLM-4.1V-9B-Thinking 模型的微调。以下是构建数据集的说明，这是一个使用了两张图片的数据集。你需要将数据集整理为 `finetune.json`, 这里是一个 GLM-4.1V-9B 微调的例子。
