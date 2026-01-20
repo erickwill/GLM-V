@@ -179,6 +179,19 @@ Notes:
 
 check [here](examples/Ascend_NPU/README_zh.md) for detailed instructions.
 
+## Integration with Other Automation Tools
+
+### Midscene.js
+
+[Midscene.js](https://midscenejs.com/en/index.html) is an open-source UI automation SDK driven by vision models, supporting multi-platform automation through JavaScript or Yaml-format process syntax.
+
+Midscene.js has completed integration with GLM-V models. You can quickly experience GLM-V through the [Midscene.js Integration Guide](https://midscenejs.com/model-common-config.html#glm-v).
+
+Here are two examples to help you get started quickly:
+
+- [Call Midscene.js via TypeScript scripts](./examples/midscene-ts-demo)
+- [Experience Midscene.js via Yaml scripts](./examples/midscene-yaml-demo)
+
 ## Model Fine-tuning
 
 [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) already supports fine-tuning for GLM-4.5V &
