@@ -113,7 +113,7 @@ pip install -r requirements.txt
 ```
 
 - vLLM and SGLang dependencies may conflict, so it is recommended to install only one of them in each environment.
-- Please note that after installation, you should verify the version of `transformers` and ensure it is upgraded to `5.0.0rc0` or above.
+- Please note that after installation, you should verify the version of `transformers` and ensure it is upgraded to `5.0.0` or above.
 
 ### transformers
 
@@ -232,8 +232,6 @@ dataset into `finetune.json` in the following format, This is an example for fin
 3. For the GLM-4.5V model, the <answer> and </answer> tags should be removed.
 
 Then, you can fine-tune following the standard LLaMA-Factory procedure.
-
-## Model Overview
 
 ## Model Overview
 

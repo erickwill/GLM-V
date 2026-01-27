@@ -80,7 +80,7 @@ pip install -r requirements.txt
 ```
 
 - vLLM 和 SGLang 依赖可能冲突，建议每个环境中只安装其中一个。
-- 请注意，安装完成之后，请检查 `transformers` 版本, 需要强制升级到 `5.0.0rc0` 及以上版本。
+- 请注意，安装完成之后，请检查 `transformers` 版本, 需要强制升级到 `5.0.0` 及以上版本。
 
 ### transformers
 
