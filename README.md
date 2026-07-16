@@ -104,80 +104,16 @@ of the box.
   across scenarios. Download the [installer](https://huggingface.co/spaces/zai-org/GLM-4.5V-Demo-App)
   or [build from source](examples/vlm-helper/README.md).
 
-## Quick Start
 
-### Environment Installation
+## Serve GLM-V Series Models Locally
 
-```bash
-pip install -r requirements.txt
-```
+The GLM-V series supports deployment with the following frameworks. Feel free to try them out:
 
-- vLLM and SGLang dependencies may conflict, so it is recommended to install only one of them in each environment.
-- Please note that after installation, you should verify the version of `transformers` and ensure it is upgraded to `5.2.0` or above.
+- [SGLang](https://github.com/sgl-project/sglang) (v0.5.15.post1+) — see [cookbook](https://docs.sglang.io/cookbook/autoregressive/GLM/GLM-4.6V)
+- [vLLM](https://github.com/vllm-project/vllm) (v0.25.0+) — see [recipes](https://recipes.vllm.ai/zai-org/GLM-4.6V)
+- [Transformers](https://github.com/huggingface/transformers) (v0.5.13+) — see [transformers docs](https://github.com/huggingface/transformers/blob/main/docs/source/en/model_doc/glm4v_moe.md)
+- For deployment on the `Ascend NPU` platform, inference frameworks such as xLLM, see [here](examples/Ascend_NPU/README_zh.md).
 
-### transformers
-
-- `trans_infer_cli.py`: CLI for continuous conversations using `transformers` backend.
-- `trans_infer_gradio.py`: Gradio web interface with multimodal input (images, videos, PDFs, PPTs) using `transformers`
-  backend.
-- `trans_infer_bench`: Academic reproduction script for `GLM-4.1V-9B-Thinking`. It forces reasoning truncation at length
-  `8192` and requests direct answers afterward. Includes a video input example; modify for other cases.
-
-### vLLM
-
-```bash
-vllm serve zai-org/GLM-4.6V \
-     --tensor-parallel-size 4 \
-     --tool-call-parser glm45 \
-     --reasoning-parser glm45 \
-     --enable-auto-tool-choice \
-     --served-model-name glm-4.6v \
-     --allowed-local-media-path / \
-     --mm-encoder-tp-mode data \
-     --mm_processor_cache_type shm
-```
-
-For more detail, check [vLLM Recipes](https://github.com/vllm-project/recipes/blob/main/GLM/GLM-V.md).
-
-### SGlang
-
-```shell
-sglang serve --model-path zai-org/GLM-4.6V \
-     --tp-size 4 \
-     --tool-call-parser glm45 \
-     --reasoning-parser glm45 \
-     --served-model-name glm-4.6v \
-     --mm-enable-dp-encoder \
-     --port 8000 \
-     --host 0.0.0.0
-```
-
-Notes:
-
-- We recommend increasing `SGLANG_VLM_CACHE_SIZE_MB` (e.g., `1024`) to provide sufficient cache space for video
-  understanding.
-- When using `vLLM` and `SGLang`, thinking mode is enabled by default. To disable the thinking switch, Add:
-  `extra_body={"chat_template_kwargs": {"enable_thinking": False}}`
-- You can configure a thinking budget to limit the model’s maximum reasoning span. Add
-
-    ```python
-  from sglang.srt.sampling.custom_logit_processor import Glm4MoeThinkingBudgetLogitProcessor
-    ```
-
-  and
-
-    ```python
-  extra_body={
-            "custom_logit_processor": Glm4MoeThinkingBudgetLogitProcessor().to_str(),
-            "custom_params": {
-                "thinking_budget": 8192, # max reasoning length in tokens
-            },
-        },
-    ```
-
-### xLLM
-
-check [here](examples/Ascend_NPU/README_zh.md) for detailed instructions.
 
 ## Integration with Other Automation Tools
 

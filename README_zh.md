@@ -71,79 +71,15 @@ GLM-4.5V / GLM-4.6V / GLM-4.1V 具备精确的定位能力。给定一个请求�
 
 - `examples/vlm-helper`：一个面向 GLM 多模态模型（主要是 GLM-4.5V，兼容 GLM-4.1V）的桌面助手，支持文本、图片、视频、PDF、PPT 等多种格式。通过连接 GLM 多模态 API，在多场景下提供智能服务。可[下载安装包](https://huggingface.co/spaces/zai-org/GLM-4.5V-Demo-App)或[从源码构建](examples/vlm-helper/README.md)。
 
-## 快速上手
 
-### 环境安装
+## 在本地部署 GLM-V 系列模型
 
-请按照 `requirements.txt` 中的自行安装。
+GLM-V 系列支持使用以下框架进行部署，欢迎试用：
 
-```bash
-pip install -r requirements.txt
-```
-
-- vLLM 和 SGLang 依赖可能冲突，建议每个环境中只安装其中一个。
-- 请注意，安装完成之后，请检查 `transformers` 版本, 需要强制升级到 `5.2.0` 及以上版本。
-
-### transformers
-
-- `trans_infer_cli.py`: 使用`transformers`库作为推理后端的命令行交互脚本。你可以使用它进行连续对话。
-- `trans_infer_gradio.py`: 使用`transformers`库作为推理后端的 Gradio 界面脚本，搭建一个可以直接使用的 Web 界面，支持图片，视频，PDF，PPT等多模态输入。
-- `trans_infer_bench`：用于学术复现的推理脚本，仅适用于 `GLM-4.1V-9B-Thinking` 模型。其核心在于指定了中断思考的长度，当思考长度超过`8192`时，强制中断思考并补上`</think><answer>`再次发起请求，让模型直接输出答案。该例子中使用的一个视频作为输入的测试的例子。其他情况需自行修改。
-
-### vLLM
-
-```bash
-vllm serve zai-org/GLM-4.6V \
-     --tensor-parallel-size 4 \
-     --tool-call-parser glm45 \
-     --reasoning-parser glm45 \
-     --enable-auto-tool-choice \
-     --served-model-name glm-4.6v \
-     --allowed-local-media-path / \
-     --mm-encoder-tp-mode data \
-     --mm_processor_cache_type shm
-```
-
-关于性能测试和更多内容，请查看 [vLLM Recipes](https://github.com/vllm-project/recipes/blob/main/GLM/GLM-V.md)。
-
-### SGLang
-
-```shell
-sglang serve --model-path zai-org/GLM-4.6V \
-     --tp-size 4 \
-     --tool-call-parser glm45 \
-     --reasoning-parser glm45 \
-     --served-model-name glm-4.6v \
-     --mm-enable-dp-encoder \
-     --port 8000 \
-     --host 0.0.0.0
-```
-
-注意事项:
-
-- 我们建议增大 `SGLANG_VLM_CACHE_SIZE_MB`（例如设为 `1024`），以为视频理解提供充足的缓存空间。
-- 在使用 `vLLM` 和 `SGLang` 时，思考模式默认开启。若需关闭思考开关，请添加：
-  `extra_body={"chat_template_kwargs": {"enable_thinking": False}}`
-- 你可以配置思考预算（thinking budget）来限制模型的最大推理长度。添加：
-
-    ```python
-  from sglang.srt.sampling.custom_logit_processor import Glm4MoeThinkingBudgetLogitProcessor
-    ```
-
-   并且增加:
-
-    ```python
-  extra_body={
-            "custom_logit_processor": Glm4MoeThinkingBudgetLogitProcessor().to_str(),
-            "custom_params": {
-                "thinking_budget": 8192, # 最大思考长度
-            },
-        },
-    ```
-
-### xLLM
-
-参考 [这里](examples/Ascend_NPU/README_zh.md) 获取详细配置教程。
+- [SGLang](https://github.com/sgl-project/sglang)（v0.5.15.post1+）—— 参见 [cookbook](https://docs.sglang.io/cookbook/autoregressive/GLM/GLM-4.6V)
+- [vLLM](https://github.com/vllm-project/vllm)（v0.25.0+）—— 参见 [recipes](https://recipes.vllm.ai/zai-org/GLM-4.6V)
+- [Transformers](https://github.com/huggingface/transformers)（v0.5.13+）—— 参见 [transformers 文档](https://github.com/huggingface/transformers/blob/main/docs/source/en/model_doc/glm4v_moe.md)
+- 如需在 `Ascend NPU` 平台上部署，可使用 xLLM 等推理框架，详见[此处](examples/Ascend_NPU/README_zh.md)。
 
 ## 与其他自动化工具集成
 
