@@ -6,11 +6,13 @@
 <img src=resources/logo.svg width="40%"/>
 </div>
 <p align="center">
-    👋 Join our <a href="resources/WECHAT.md" target="_blank">WeChat</a> and <a href="https://discord.gg/eQbGCYS9ym" target="_blank">Discord</a> communities.
+    👋 Join our <a href="resources/WECHAT.md" target="_blank">WeChat</a> or <a href="https://discord.gg/Hc5z9bx5Xw" target="_blank">Discord</a> communities.
     <br>
-    📖 Check out the GLM-4.6V <a href="https://z.ai/blog/glm-4.6v" target="_blank">blog</a> and GLM-4.5V & GLM-4.1V <a href="https://arxiv.org/abs/2507.01006" target="_blank">paper</a>.
+    📖 Check out the GLM-5.3-Flash <a href="https://z.ai/blog/glm-5.3-flash" target="_blank">blog</a> and the GLM-4.5V & GLM-4.1V <a href="https://arxiv.org/abs/2507.01006" target="_blank">technical report</a>.
     <br>
-    📍 Try <a href="https://chat.z.ai/" target="_blank">online</a> or use the <a href="https://docs.z.ai/guides/vlm/glm-4.6v" target="_blank">API</a>.
+    📍 Use the GLM-5.3-Flash API service on the <a href="https://docs.bigmodel.cn/cn/guide/models/text/glm-5.3" target="_blank">API platform</a>.
+    <br>
+    🔜 Try GLM-5.3-Flash on <a href="https://z.ai" target="_blank">z.ai</a> (coming soon).
 </p>
 
 ## Introduction
@@ -29,6 +31,8 @@ see [Fixed and Remaining Issues](#fixed-and-remaining-issues).
 
 ## Project Updates
 
+- **News**: `2026/09/02`: This repository will no longer be maintained. For questions about GLM-5.3-Flash, please visit the [GLM-5](https://github.com/zai-org/GLM-5) repository for discussion.
+- **News**: `2026/08/26`: We released [GLM-5.3-Flash](https://z.ai/blog/glm-5.3-flash), our first open-source natively multimodal model.
 - **News**: `2026/04/02`: We released [GLM-5V-Turbo](https://docs.z.ai/guides/vlm/glm-5v-turbo) 
   and [GLM-skills](https://github.com/zai-org/GLM-skills).
 - **News**: `2026/03/28`: We have released multiple GLM-V related Skills, covering several specialized areas

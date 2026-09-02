@@ -6,10 +6,13 @@
 <img src=resources/logo.svg width="40%"/>
 </div>
 <p align="center">
-    👋 加入我们的 <a href="resources/WECHAT.md" target="_blank">微信</a> 和 <a href="https://discord.gg/eQbGCYS9ym" target="_blank">Discord</a> 社区。
+    👋 加入我们的 <a href="resources/WECHAT.md" target="_blank">微信</a> 或 <a href="https://discord.gg/Hc5z9bx5Xw" target="_blank">Discord</a> 社区。
     <br>
-    📖 查看 GLM-4.6V 的<a href="https://z.ai/blog/glm-4.6v" target="_blank"> 技术博客 </a>以及 GLM-4.5V 与 GLM-4.1V 的<a href="https://arxiv.org/abs/2507.01006" target="_blank"> 论文 </a>。    <br>
-    📍<a href="https://chat.z.ai/" target="_blank">在线体验</a> ，或使用 <a href="https://docs.z.ai/guides/vlm/glm-4.6v" target="_blank">API</a>。
+    📖 查看 GLM-5.3-Flash <a href="https://z.ai/blog/glm-5.3-flash" target="_blank">技术博客</a> 和 GLM-4.5V & GLM-4.1V <a href="https://arxiv.org/abs/2507.01006" target="_blank">技术报告</a>。
+    <br>
+    📍 在 <a href="https://docs.bigmodel.cn/cn/guide/models/text/glm-5.3">API 平台</a> 使用 GLM-5.3-Flash API 服务。
+    <br>
+    🔜 在 <a href="https://z.ai">z.ai</a> 上体验 GLM-5.3-Flash。
 </p>
 
 ## 简介
@@ -21,6 +24,8 @@
 
 ## 项目更新
 
+- **News**: `2026/09/02`: 该仓库将停止维护，关于 GLM-5.3-Flash 的使用问题，欢迎前往 [GLM-5](https://github.com/zai-org/GLM-5) 讨论。
+- **News**: `2026/08/26`: 我们发布了 [GLM-5.3-Flash](https://z.ai/blog/glm-5.3-flash), 这是我们第一个开源的原生多模态模型。
 - **News**: `2026/04/02`: 我们发布了 [GLM-5V-Turbo](https://docs.z.ai/guides/vlm/glm-5v-turbo) 以及 [GLM-skills](https://github.com/zai-org/GLM-skills)。
 - **News**: `2026/03/28`: 我们发布了多个 GLM-V 相关的 Skills，包含 GLM-V-Grounding, GLM-V-Prompt-Gen, GLM-V-Prompt-Gen, GLM-V-Grounding 等多个分支领域的Skills，欢迎在[这里](skills)使用。
 - **News**: `2025/12/08`: 我们发布了 **GLM-4.6V**，包括 GLM-4.6V（106B-A12B）和 GLM-4.6V-Flash（9B）。GLM-4.6V 将训练时的上下文窗口扩展到 128k tokens，并首次引入原生的 Function Calling 能力。这一升级有效打通了“视觉感知”到“可执行行动”的链路，为真实业务场景中的多模态智能体提供了统一的技术底座。
